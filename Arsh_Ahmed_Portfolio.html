@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsh Ahmed - Portfolio</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* ========================================
+        ROOT VARIABLES (Theme & Customization)
+        ========================================
+        */
+        :root {
+            /* Default: Dark Mode */
+            --bg-primary: #121212;
+            --bg-secondary: #1E1E1E;
+            --border-color: #2c2c2c;
+            --text-primary: #EAEAEA;
+            --text-secondary: #9E9E9E;
+            --accent-color: #007BFF;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            
+            --shadow-soft: 0 8px 16px var(--shadow-color);
+            --shadow-hover: 0 12px 24px var(--shadow-color);
+
+            --radius-md: 12px;
+            --radius-lg: 18px;
+
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+
+            --hover-transition: all 0.3s ease;
+        }
+        
+        /* Light Mode Variables */
+        body.light-mode {
+            --bg-primary: #F5F5F5;
+            --bg-secondary: #FFFFFF;
+            --border-color: #E0E0E0;
+            --text-primary: #1E1E1E;
+            --text-secondary: #555555;
+            --accent-color: #007BFF;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* ========================================
+        GLOBAL STYLES
+        ========================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            text-align: center;
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--hover-transition);
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* ========================================
+        GLOBAL CARD STYLE
+        ========================================
+        */
+        .card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--hover-transition);
+            margin-bottom: var(--spacing-xl);
+            width: 100%; /* Ensure cards take full width in grids */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* ========================================
+        BUTTON RESETS
+        ========================================
+        */
+        
+        /* Reset styles for all elements that will act as modal triggers */
+        .modal-trigger, .project-trigger {
+            appearance: none;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            text-align: left;
+            padding: 0;
+            margin: 0;
+            background: none;
+            color: inherit; /* Inherit text color by default */
+            width: 100%; /* Ensure triggers take full width */
+        }
+        
+        /* ========================================
+        THEME TOGGLE
+        ========================================
+        */
+        .theme-toggle-container {
+            text-align: right;
+            margin-bottom: var(--spacing-md);
+            /* Position it at the top right of the container */
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-xl);
+        }
+
+        .theme-toggle {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            border: none;
+            padding: var(--spacing-sm);
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--hover-transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Icon visibility: Show sun in dark mode, moon in light mode */
+        .theme-toggle .fa-sun { display: block; }
+        .theme-toggle .fa-moon { display: none; }
+
+        body.light-mode .theme-toggle .fa-sun { display: none; }
+        body.light-mode .theme-toggle .fa-moon { display: block; color: var(--text-primary); }
+
+        /* Adjust container padding to not overlap with toggle */
+        .container {
+            position: relative;
+        }
+
+        /* ========================================
+        HERO SECTION
+        ========================================
+        */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            padding-top: 60px; /* Add padding to avoid toggle button */
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+            
+            /* Styles for Image Avatar */
+            object-fit: cover; /* Ensures the image covers the circle */
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero .role {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero .intro {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .interest-tag {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            padding: 5px 15px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ========================================
+        SKILLS & TOOLS
+        ========================================
+        */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm) var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .skill-pill {
+            /* Specific styles for skill pills */
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 16px;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--hover-transition);
+            width: auto; /* Override full width */
+        }
+
+        .skill-pill:hover {
+            background-color: var(--accent-color);
+            color: #fff; /* Ensure text is white on hover */
+            transform: scale(1.05);
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .tool-icon {
+            /* Specific styles for tool icons */
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-primary);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            transition: var(--hover-transition);
+        }
+        
+        .tool-icon .fa-figma { color: #F24E1E; }
+        .tool-icon .fa-database { color: #007BFF; }
+        .tool-icon .fa-google { color: #4285F4; }
+        .tool-icon .fa-briefcase { color: #9E9E9E; }
+        .tool-icon .fa-graduation-cap { color: #FFC107; }
+        .tool-icon .fa-linkedin-in { color: #0A66C2; }
+
+        .tool-icon:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background-color: var(--bg-primary);
+        }
+
+        /* ========================================
+        EDUCATION & CERTIFICATIONS
+        ========================================
+        */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column */
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        @media (min-width: 768px) {
+            .education-grid {
+                grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+            }
+        }
+
+        /* --- Education Timeline --- */
+        .timeline {
+            position: relative;
+            padding-left: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-lg);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px; /* (18px / 2) - 1px border */
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 3px solid var(--bg-secondary);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px 0;
+        }
+
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        /* --- Certifications List --- */
+        .cert-list {
+            margin-top: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            background-color: var(--border-color);
+            border-radius: var(--radius-md);
+            transition: var(--hover-transition);
+        }
+        
+        .cert-item:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.03);
+        }
+        
+        .cert-item i {
+            font-size: 1.5rem;
+            margin-right: var(--spacing-md);
+            color: var(--accent-color);
+            width: 30px;
+            text-align: center;
+        }
+        
+        .cert-item:hover i {
+            color: var(--text-primary);
+        }
+        
+        .cert-text strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .cert-text span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .cert-item:hover .cert-text strong,
+        .cert-item:hover .cert-text span {
+            color: #fff; /* Ensure text is white on hover */
+        }
+
+        /* ========================================
+        WORK & PROJECTS
+        ========================================
+        */
+        .work-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        @media (min-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        .work-card, .project-card {
+            /* Specific styles for work/project card buttons */
+            /* Inherits .card styles */
+            padding: var(--spacing-lg); /* Re-apply padding */
+            background-color: var(--bg-secondary); /* Re-apply background */
+            height: 100%; /* Ensure equal height in grid */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        
+        .work-card h3, .project-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+
+        .work-card .company {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .work-card .dates {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 4px 0 0 0;
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+        FOOTER (LINKS & DETAILS)
+        ========================================
+        */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-xl) 0;
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-soft);
+            transition: var(--hover-transition);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+        
+        .social-link.fa-instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-link.fa-behance:hover { background-color: #053eff; }
+        .social-link.fa-linkedin-in:hover { background-color: #0A66C2; }
+
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .detail-item {
+            background-color: var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .detail-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .detail-item span {
+            color: var(--text-secondary);
+        }
+        
+        /* ========================================
+        SKILL MODAL (SIMPLE POPUP)
+        ========================================
+        */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Dim background */
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+        }
+        
+        body.light-mode .modal {
+             background-color: rgba(255, 255, 255, 0.8); /* Lighter dim background */
+        }
+
+        .modal.visible {
+            display: flex; /* Show the modal */
+        }
+
+        .modal-content {
+            background-color: var(--bg-secondary);
+            margin: auto;
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 500px; /* Standard width for simple modal */
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* ========================================
+        PROJECT MODAL (SPLIT SCREEN POPUP)
+        ========================================
+        */
+        /* Override styles for the Project Modal Content */
+        .project-modal-content {
+            max-width: 1000px; /* Much wider for split screen */
+            padding: 0; /* Remove default padding to let grid handle it */
+            overflow: hidden; /* Contain images */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            height: auto;
+        }
+
+        .project-info {
+            padding: var(--spacing-xl);
+            overflow-y: auto;
+        }
+        
+        .project-gallery {
+            background: transparent; /* NO BACKGROUND */
+            border: none; /* NO BORDER */
+            position: relative;
+            min-height: 300px;
+            height: 100%;
+            width: 100%;
+            display: block; /* Block layout to fill space */
+        }
+        
+        /* iframe specific styles */
+        .project-gallery iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* FORCE FULL BLEED - No empty space */
+            display: block;
+            cursor: zoom-in; /* Indicate clickable */
+        }
+        
+        /* Fix for slide switching display property */
+        .slide:not(.active) {
+            display: none;
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fade 0.5s;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+            border: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Modal Close Button */
+        .modal-close {
+            color: var(--text-secondary);
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-lg);
+            font-size: 2rem;
+            font-weight: bold;
+            transition: var(--hover-transition);
+            z-index: 10;
+            background: rgba(0,0,0,0.5); /* readable on images */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.light-mode .modal-close {
+             color: #fff; 
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #fff;
+            background: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            font-size: 1.75rem;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-md); /* Space for close button on mobile */
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 0;
+            /* Allow descriptions to have new lines */
+            white-space: pre-wrap;
+        }
+        
+        .modal-content a {
+            font-weight: 600;
+            word-break: break-all; /* Ensure long links wrap */
+        }
+        
+        /* ========================================
+        LIGHTBOX MODAL (FULL SCREEN IMAGE)
+        ========================================
+        */
+        #lightbox-modal {
+            z-index: 2000; /* Higher than standard modal */
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 0;
+            display: none; /* Explicitly hidden */
+        }
+
+        #lightbox-modal.visible {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            animation: zoom 0.3s;
+            border-radius: 4px;
+        }
+        
+        /* Lightbox close button (Top right of screen) */
+        #lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            background: transparent;
+            width: auto;
+            height: auto;
+        }
+        
+        #lightbox-close:hover,
+        #lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+
+
+        /* ========================================
+        RESPONSIVE DESIGN
+        ========================================
+        */
+        @media (min-width: 768px) {
+            /* Desktop Split Screen for Project Modal */
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+                height: 500px; /* Fixed height for desktop modal */
+            }
+            
+            .project-info {
+                height: 100%; /* Scrollable description */
+            }
+            
+            .project-gallery {
+                height: 100%;
+                /* Removed border-left */
+            }
+            
+             .slide {
+                height: 100%; /* Ensure image fills height */
+            }
+            
+            .modal-close {
+                background: transparent; /* Clean background on desktop if not over image */
+                color: var(--text-secondary);
+            }
+             body.light-mode .modal-close {
+                 color: var(--text-secondary);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .skills-grid, .education-grid, .work-grid, .projects-grid, .footer-grid, .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .theme-toggle-container {
+                top: var(--spacing-md);
+                right: var(--spacing-md);
+            }
+            .hero {
+                padding-top: var(--spacing-xl);
+            }
+            .project-gallery {
+                /* Removed border-top */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======== STANDARD MODAL (For Skills, Tools, etc.) ======== -->
+    <div id="skill-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="std-close">&times;</span>
+            <h3 id="modal-title">Skill Title</h3>
+            <p id="modal-description">Skill description goes here.</p>
+        </div>
+    </div>
+
+    <!-- ======== PROJECT MODAL (Split Screen + Slideshow) ======== -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content project-modal-content">
+            <span class="modal-close" id="proj-close">&times;</span>
+            <div class="project-grid">
+                
+                <!-- Left Side: Text -->
+                <div class="project-info">
+                    <h3 id="project-title">Project Title</h3>
+                    <p id="project-description">Detailed description...</p>
+                </div>
+
+                <!-- Right Side: Slideshow OR Embed -->
+                <div class="project-gallery" id="project-gallery-container">
+                    <!-- Content injected by JS -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- ======== LIGHTBOX MODAL (Full Screen Image) ======== -->
+    <div id="lightbox-modal" class="modal">
+        <span class="modal-close" id="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Full Screen View">
+    </div>
+
+
+    <main class="container">
+
+        <!-- ======== THEME TOGGLE ======== -->
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>  <!-- Show in Dark Mode -->
+                <i class="fas fa-moon"></i> <!-- Show in Light Mode -->
+            </button>
+        </div>
+
+        <!-- ======== HERO SECTION ======== -->
+        <section class="hero">
+            <img src="https://i.ibb.co/tM3vYCtP/profile-pic-2.png" alt="Arsh Ahmed - Avatar" class="profile-image">
+            <h1>Arsh Ahmed</h1>
+            <p class="role">Instructional Designer, UX Designer, Product Thinker, Project Manager</p>
+            <p class="intro">
+                I don't just build products; I build understanding. I leverage UX and Product thinking to find the *right* problem, 
+                Instructional Design to craft the *right* solution, and Project Management to build the solution *right*.
+            </p>
+            <div class="interest-tags">
+                <span class="interest-tag">Product Management</span>
+                <span class="interest-tag">UX Design</span>
+                <span class="interest-tag">Project Management</span>
+                <span class="interest-tag">Business Analysis</span>
+                <span class="interest-tag">E-Learning</span>
+            </div>
+        </section>
+
+        <!-- ======== SKILLS & TOOLS GRID ======== -->
+        <div class="skills-grid">
+            <!-- Technical Skills Card -->
+            <div class="card">
+                <h2>Technical Skills</h2>
+                <div class="skill-tags">
+                    <button class="skill-pill modal-trigger" data-title="SQL" 
+                            data-description="Proficient in writing SQL queries to retrieve, manipulate, and analyze data. Certified SQL (Intermediate) by HackerRank.">
+                        SQL
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="E-Learning Content" 
+                            data-description="Experience in designing and creating interactive e-learning content for platforms like Udemy and Coursera, focusing on merging creativity and technology.">
+                        E-Learning Content
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="ADDIE Model" 
+                            data-description="Trained in the ADDIE model (Analysis, Design, Development, Implementation, Evaluation) for instructional design.">
+                        ADDIE Model
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Bloom's Taxonomy" 
+                            data-description="Skilled in mapping course objectives and learning outcomes using Bloom's Taxonomy to create effective educational experiences.">
+                        Bloom's Taxonomy
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="User Research" 
+                            data-description="Foundation in UX design principles from Google, including how to empathize with users and define their core needs and pain points.">
+                        User Research
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Wireframing" 
+                            data-description="Capable of creating low-fidelity and high-fidelity wireframes to map out user flows and screen layouts.">
+                        Wireframing
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Prototyping" 
+                            data-description="Hands-on experience with Figma to build interactive prototypes for user testing and stakeholder presentations.">
+                        Prototyping
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Business Analysis" 
+                            data-description="Certified by LinkedIn Learning in Business Analysis, with a focus on understanding organizational dynamics and process optimization.">
+                        Business Analysis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Social Skills Card -->
+            <div class="card">
+                <h2>Social Skills</h2>
+                <div class="skill-tags">
+                    <button class="skill-pill modal-trigger" data-title="Teamwork & Collaboration"
+                            data-description="Proven ability to collaborate with cross-functional teams, including AI experts, designers, and marketers, to achieve project goals.">
+                        Teamwork & Collaboration
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Adaptability"
+                            data-description="Quick to adapt to new tools, processes, and project requirements, as demonstrated in fast-paced recruiter and intern roles.">
+                        Adaptability
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Negotiation"
+                            data-description="Developed negotiation skills during the full-cycle recruitment process, including managing offers and candidate expectations.">
+                        Negotiation
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Critical Thinking"
+                            data-description="A proactive problem-solver committed to applying critical thinking to optimize processes and drive project success.">
+                        Critical Thinking
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Resource Management"
+                            data-description="Foundational knowledge of resource management from project management training, focusing on allocation and optimization.">
+                        Resource Management
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Networking"
+                            data-description="Built and maintained relationships with candidates and stakeholders, understanding their goals and preferences.">
+                        Networking
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Continuous Learning"
+                            data-description="A passion for continuous learning, demonstrated by a wide range of certifications in SQL, Project Management, UX Design, and more.">
+                        Continuous Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======== TOOLS SECTION ======== -->
+        <section class="card">
+            <h2>Tools</h2>
+            <div class="tools-grid">
+                <button class="tool-icon modal-trigger" title="SQL"
+                        data-title="SQL (Intermediate)"
+                        data-description="Certified by HackerRank, I use SQL to query databases, perform analysis, and retrieve data for reporting.">
+                    <i class="fas fa-database"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="Figma"
+                        data-title="Figma (Intermediate)"
+                        data-description="My primary tool for UX design. I use Figma for wireframing, creating high-fidelity interactive prototypes, and collaborating on design systems.">
+                    <i class="fab fa-figma"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="Google Suite"
+                        data-title="Google Suite"
+                        data-description="Expert in Google Suite (Docs, Sheets, Slides, Forms) for project documentation, data analysis, presentations, and creating surveys.">
+                    <i class="fab fa-google"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="Recruitment Software (Job Diva)"
+                        data-title="ATS (Job Diva)"
+                        data-description="Utilized Applicant Tracking Systems like Job Diva to manage the full-cycle recruitment process, from sourcing to onboarding.">
+                    <i class="fas fa-briefcase"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="E-Learning Platforms"
+                        data-title="E-Learning Platforms"
+                        data-description="Experience designing content for major platforms like Udemy and Coursera, understanding their specific technical and engagement requirements.">
+                    <i class="fas fa-graduation-cap"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="LinkedIn"
+                        data-title="LinkedIn"
+                        data-description="Used extensively for networking, candidate sourcing (Recruiter), and as a platform for my own professional certifications and learning.">
+                    <i class="fab fa-linkedin-in"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ======== EDUCATION & CERTIFICATIONS GRID ======== -->
+        <section class="education-grid">
+            
+            <!-- Education Card -->
+            <div class="card">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2024</span>
+                        <h3 class="timeline-title">Bachelor of Business Administration</h3>
+                        <p class="timeline-subtitle">Dr. A.P.J. Abdul Kalam University, Indore MP</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2021</span>
+                        <h3 class="timeline-title">High School</h3>
+                        <p class="timeline-subtitle">The Millennium School, Indore MP</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Card -->
+            <div class="card">
+                <h2>Certifications</h2>
+                <div class="cert-list">
+                    <button class="cert-item modal-trigger"
+                            data-title="Foundations of Project Management"
+                            data-description="Provider: Google
+                    
+Click to view certificate:
+<a href='https://www.coursera.org/account/accomplishments/certificate/VFT73AGDV2E7' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fab fa-google"></i>
+                        <div class="cert-text">
+                            <strong>Foundations of Project Management</strong>
+                            <span>Google</span>
+                        </div>
+                    </button>
+                    
+                    <button class="cert-item modal-trigger"
+                            data-title="Foundations of User Experience (UX) Design"
+                            data-description="Provider: Google
+                    
+Click to view certificate:
+<a href='https://www.coursera.org/account/accomplishments/certificate/2PCA3Q5D8WJT' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fab fa-google"></i>
+                        <div class="cert-text">
+                            <strong>Foundations of User Experience (UX) Design</strong>
+                            <span>Google</span>
+                        </div>
+                    </button>
+                    
+                    <button class="cert-item modal-trigger"
+                            data-title="Product Management Basics"
+                            data-description="Provider: Pendo
+                    
+Click to view certificate:
+<a href='https://www.credly.com/badges/c6777a56-e877-4044-852b-38a26fd9b3d0/public_url' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fas fa-check-circle" style="color: #E80A89;"></i>
+                        <div class="cert-text">
+                            <strong>Product Management Basics</strong>
+                            <span>Pendo</span>
+                        </div>
+                    </button>
+                    
+                    <button class="cert-item modal-trigger"
+                            data-title="SQL (Intermediate)"
+                            data-description="Provider: HackerRank
+                    
+Click to view certificate:
+<a href='https://www.hackerrank.com/certificates/d34e56833aa9' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fab fa-hackerrank" style="color: #2EC866;"></i>
+                        <div class="cert-text">
+                            <strong>SQL (Intermediate)</strong>
+                            <span>HackerRank</span>
+                        </div>
+                    </button>
+                    
+                    <button class="cert-item modal-trigger"
+                            data-title="Business Analysis"
+                            data-description="Provider: LinkedIn
+                    
+Click to view certificate:
+<a href='https://www.linkedin.com/learning/certificates/79f3d40cecd9f21d0685fe2f331674b6c1f8bdfc34a5d314447edb30f11831f1' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fab fa-linkedin-in"></i>
+                        <div class="cert-text">
+                            <strong>Business Analysis</strong>
+                            <span>LinkedIn Learning</span>
+                        </div>
+                    </button>
+                    
+                    <button class="cert-item modal-trigger"
+                            data-title="SQL (Basic)"
+                            data-description="Provider: HackerRank
+                    
+Click to view certificate:
+<a href='https://www.hackerrank.com/certificates/f1b535d95a51' target='_blank' rel='noopener noreferrer'>View Certificate</a>">
+                        <i class="fab fa-hackerrank" style="color: #2EC866;"></i>
+                        <div class="cert-text">
+                            <strong>SQL (Basic)</strong>
+                            <span>HackerRank</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== WORK EXPERIENCE SECTION ======== -->
+        <section>
+            <h2>Work Experience</h2>
+            <div class="work-grid">
+                <button class="card work-card modal-trigger"
+                        data-title="Intern - Instructional Designer @ ORANTS AI"
+                        data-description="As an Instructional Design Intern at ORANTS AI, I’m learning how to turn complex tech topics into engaging learning experiences.
+
+From mapping course objectives using ADDIE and Bloom’s Taxonomy to creating interactive e-learning content for platforms like Udemy and Coursera, every project has helped me merge creativity, technology, and education.
+
+I collaborate with AI experts, designers, and marketers to design content that not only informs but inspires learners. This experience has deepened my understanding of digital learning design, learner engagement strategies, and the future of AI-driven education.">
+                    <h3>Intern - Instructional Designer</h3>
+                    <p class="company">ORANTS AI (Remote)</p>
+                    <p class="dates">Oct 2025 – Present</p>
+                </button>
+                <button class="card work-card modal-trigger"
+                        data-title="US Healthcare Recruiter @ Tekfortune Inc."
+                        data-description="Conducted candidate sourcing through various channels such as job boards and social media.
+Screened potential candidates to assess their qualifications and fit for healthcare positions.
+Managed candidate relationships and provided support throughout the hiring process, addressing any concerns or questions.
+Utilized applicant tracking system such as Job Diva.">
+                    <h3>US Healthcare Recruiter</h3>
+                    <p class="company">Tekfortune Inc.</p>
+                    <p class="dates">Nov 2023 – Jun 2024</p>
+                </button>
+                <button class="card work-card modal-trigger"
+                        data-title="US Healthcare Recruiter @ SGS Consulting"
+                        data-description="Utilized various recruitment methods including job boards, social media and cold calling to source qualified healthcare professionals such as nurses, physicians, and allied health professionals.
+Managed full-cycle recruitment process including job postings, candidate sourcing, resume review, scheduling interview, offer negotiation, and onboarding.
+Developed and maintained relationships with candidates to understand their career goals and preferences.">
+                    <h3>US Healthcare Recruiter</h3>
+                    <p class="company">SGS Consulting</p>
+                    <p class="dates">Apr 2023 – Sep 2023</p>
+                </button>
+            </div>
+        </section>
+
+        <!-- ======== PROJECTS SECTION ======== -->
+        <section>
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: Uses Image Slideshow -->
+                <button class="card project-card project-trigger"
+                        data-media-type="image"
+                        data-title="Google Project Management"
+                        data-description="This is a comprehensive project management certification from Google. I mastered the art of managing projects from initiation to closure. 
+
+Key learnings included:
+• Creating effective project plans and timelines.
+• Managing stakeholders and communication.
+• Understanding Agile and Scrum methodologies.
+• Risk management and resource allocation.
+
+This project demonstrates my ability to handle complex tasks and lead teams effectively."
+                        data-media-source="https://placehold.co/600x400/007BFF/FFFFFF?text=Project+Planning,https://placehold.co/600x400/1E1E1E/EAEAEA?text=Risk+Analysis,https://placehold.co/600x400/2c2c2c/FFFFFF?text=Agile+Workflow">
+                    <h3>Google Project Management</h3>
+                    <p>Completed Google's certification, mastering project initiation, planning, execution, and closure. Learned to manage risk, resources, and stakeholders effectively.</p>
+                </button>
+
+                <!-- Project 2: Uses Google Slides Embed -->
+                <button class="card project-card project-trigger"
+                        data-media-type="iframe"
+                        data-title="Art Gallery UX Case Study"
+                        data-description="A deep dive into User Experience (UX) design principles. This project involved the full design thinking process: Empathize, Define, Ideate, Prototype, and Test.
+
+Key achievements:
+• Conducted user research and created personas.
+• Developed wireframes and low-fidelity prototypes.
+• Built high-fidelity interactive prototypes in Figma.
+• Ran usability studies to gather feedback and iterate.
+
+This showcases my user-centric approach to problem-solving."
+                        data-media-source="https://docs.google.com/presentation/d/1-uNEJLIRVBUW9cQZdp2zbGQVtWIlui3y9OmYO1Jlv0I/embed?start=false&loop=false&delayms=3000">
+                    <h3>Art Gallery UX Case Study</h3>
+                    <p>Learned the foundations of User Experience (UX) design. Practiced empathizing with users, defining pain points, and creating wireframes and prototypes in Figma.</p>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======== FOOTER (LINKS & DETAILS) ======== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Portfolio Links -->
+                <div class="card">
+                    <h2>Get In Touch</h2>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/[YOUR_INSTAGRAM_HANDLE]" class="social-link fa-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.behance.net/caesararry" class="social-link fa-behance" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/arsh-ahmed-412965279/" class="social-link fa-linkedin-in" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="card">
+                    <h2>Details</h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <strong>Age</strong>
+                            <span>22</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Nationality</strong>
+                            <span>Indian</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Phone</strong>
+                            <span>+91 9111112526</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Email</strong>
+                            <a href="mailto:arshahmed12122@gmail.com" style="font-size: 0.9rem;">arshahmed12122<br>@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======== JAVASCRIPT ======== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. STANDARD MODAL LOGIC ---
+            const skillModal = document.getElementById('skill-modal');
+            const skillTitle = skillModal.querySelector('#modal-title');
+            const skillDesc = skillModal.querySelector('#modal-description');
+            const stdCloseBtn = document.getElementById('std-close');
+            const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+            const openStandardModal = (title, description) => {
+                skillTitle.textContent = title;
+                skillDesc.innerHTML = description.replace(/\n/g, '<br>');
+                skillModal.classList.add('visible');
+            }
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const title = trigger.getAttribute('data-title');
+                    const description = trigger.getAttribute('data-description');
+                    openStandardModal(title, description);
+                });
+            });
+
+            // --- 2. PROJECT MODAL LOGIC (Split Screen: Slideshow OR Embed) ---
+            const projectModal = document.getElementById('project-modal');
+            const projTitle = projectModal.querySelector('#project-title');
+            const projDesc = projectModal.querySelector('#project-description');
+            const galleryContainer = document.getElementById('project-gallery-container');
+            const projCloseBtn = document.getElementById('proj-close');
+            const projectTriggers = document.querySelectorAll('.project-trigger');
+            
+            // --- 2b. LIGHTBOX LOGIC ---
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            const openLightbox = (src) => {
+                lightboxImg.src = src;
+                lightboxModal.classList.add('visible');
+            }
+
+            const closeLightbox = () => {
+                lightboxModal.classList.remove('visible');
+                setTimeout(() => { lightboxImg.src = ''; }, 200); // Clear src after fade out
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal || e.target === lightboxImg) {
+                    closeLightbox();
+                }
+            });
+
+
+            let currentSlideIndex = 0;
+            let currentImages = [];
+
+            // Function to render Image Slideshow
+            const renderSlideshow = (images) => {
+                galleryContainer.innerHTML = ''; // Clear existing
+                
+                const slideshowWrapper = document.createElement('div');
+                slideshowWrapper.className = 'slideshow-container';
+                
+                // Create buttons
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'prev';
+                prevBtn.innerHTML = '&#10094;';
+                
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'next';
+                nextBtn.innerHTML = '&#10095;';
+                
+                // Add images
+                images.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'slide';
+                    if(index === 0) img.classList.add('active');
+                    
+                    // ADDED: Click listener to open lightbox
+                    img.addEventListener('click', () => openLightbox(src));
+                    
+                    slideshowWrapper.appendChild(img);
+                });
+                
+                slideshowWrapper.appendChild(prevBtn);
+                slideshowWrapper.appendChild(nextBtn);
+                galleryContainer.appendChild(slideshowWrapper);
+
+                // Logic
+                currentSlideIndex = 0;
+                const showSlide = (n) => {
+                    const slides = slideshowWrapper.querySelectorAll('.slide');
+                    if (slides.length === 0) return;
+                    if (n >= slides.length) currentSlideIndex = 0;
+                    if (n < 0) currentSlideIndex = slides.length - 1;
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    slides[currentSlideIndex].classList.add('active');
+                };
+
+                prevBtn.addEventListener('click', () => { currentSlideIndex--; showSlide(currentSlideIndex); });
+                nextBtn.addEventListener('click', () => { currentSlideIndex++; showSlide(currentSlideIndex); });
+            };
+
+            // Function to render Iframe Embed
+            const renderEmbed = (src) => {
+                galleryContainer.innerHTML = ''; // Clear existing
+                const iframe = document.createElement('iframe');
+                iframe.src = src;
+                iframe.frameBorder = "0";
+                iframe.width = "100%";
+                iframe.height = "100%";
+                iframe.allowFullscreen = true;
+                galleryContainer.appendChild(iframe);
+            };
+
+            projectTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const title = trigger.getAttribute('data-title');
+                    const description = trigger.getAttribute('data-description');
+                    const mediaType = trigger.getAttribute('data-media-type');
+                    const mediaSource = trigger.getAttribute('data-media-source');
+                    
+                    projTitle.textContent = title;
+                    projDesc.innerHTML = description.replace(/\n/g, '<br>');
+                    
+                    if(mediaType === 'image' && mediaSource) {
+                        renderSlideshow(mediaSource.split(','));
+                    } else if (mediaType === 'iframe' && mediaSource) {
+                        renderEmbed(mediaSource);
+                    } else {
+                        galleryContainer.innerHTML = '<p style="color:white; text-align:center;">No media available</p>';
+                    }
+
+                    projectModal.classList.add('visible');
+                });
+            });
+
+
+            // --- 3. SHARED CLOSE LOGIC ---
+            const closeAllModals = () => {
+                skillModal.classList.remove('visible');
+                projectModal.classList.remove('visible');
+                lightboxModal.classList.remove('visible'); // Ensure lightbox closes too
+                // Stop iframe video/audio when closing
+                galleryContainer.innerHTML = ''; 
+            }
+
+            stdCloseBtn.addEventListener('click', closeAllModals);
+            projCloseBtn.addEventListener('click', closeAllModals);
+
+            // Close on backdrop click
+            window.addEventListener('click', (e) => {
+                if (e.target === skillModal || e.target === projectModal) {
+                    closeAllModals();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeAllModals();
+            });
+
+            // --- 4. THEME TOGGLE LOGIC ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                } else {
+                    body.classList.remove('light-mode');
+                }
+            };
+
+            // Initialize Theme
+            let savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme(systemPrefersDark.matches ? 'dark' : 'light');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                let newTheme;
+                if (body.classList.contains('light-mode')) {
+                    newTheme = 'dark';
+                } else {
+                    newTheme = 'light';
+                }
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+            systemPrefersDark.addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
