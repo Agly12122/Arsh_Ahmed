@@ -782,13 +782,14 @@
             width: 100%;
             height: 100%;
             position: relative;
+            background-color: var(--bg-primary);
         }
 
         .slide {
             display: none;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* FORCE FULL BLEED - No empty space */
+            object-fit: contain; /* Show the full image, never crop */
             display: block;
             cursor: zoom-in; /* Indicate clickable */
         }
