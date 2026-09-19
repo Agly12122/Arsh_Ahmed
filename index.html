@@ -593,6 +593,29 @@
             font-size: 0.95rem;
         }
 
+        .project-preview-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-md) 0;
+        }
+
+        .project-preview-list li {
+            position: relative;
+            padding-left: 1.2em;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .project-preview-list li::before {
+            content: '\2192';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
         /* ========================================
         FOOTER (LINKS & DETAILS)
         ========================================
@@ -1066,7 +1089,13 @@
                 <button class="card project-card featured-project-card project-trigger"
                         data-media-type="iframe"
                         data-title="Signal-Based Prospecting & Intent Scoring — Clay"
-                        data-description="<ul><li>Built a Clay workflow that finds companies actively hiring for GTM/RevOps roles — a real buying signal — and enriches each with funding, headcount, and open-roles data</li><li>Scores intent 0–100 with a weighted formula: funding recency + open-role volume + posting freshness, auto-classifying every company into Hot / Warm / Cold priority tiers</li><li>Layered in an AI-personalized outreach opener per company</li><li>Caught and fixed a real AI hallucination bug before shipping — a research column had invented a completely unrelated company profile instead of using the real data</li><li>No paid tools, no internal company data — public data and self-authored synthetic data only</li></ul>Watch the full walkthrough below."
+                        data-description="Built a Clay workflow that identifies companies actively hiring for GTM/RevOps roles as a buying signal, enriches each with funding, headcount, and open-roles data, and scores intent (0–100) with a weighted formula — funding recency, open-role volume, and posting freshness — auto-classifying every company into Hot / Warm / Cold priority tiers.
+
+Layered in an AI-personalized outreach opener per company. Caught and fixed a real AI hallucination bug before shipping by verifying every output against the actual source job posting — a Claygent research column had invented a completely unrelated company profile instead of using the real data.
+
+No paid tools, no internal company data — public data and self-authored synthetic data only.
+
+Watch the full walkthrough below."
                         data-media-source="https://www.youtube.com/embed/11CiBV3i9rI">
                     <div class="project-tags">
                         <span class="project-tag">Clay</span>
@@ -1074,7 +1103,11 @@
                         <span class="project-tag">Verified</span>
                     </div>
                     <h3>Signal-Based Prospecting & Intent Scoring</h3>
-                    <p>Clay workflow scoring buying intent from hiring signals, with an AI-personalized outreach opener. Caught and fixed a real AI hallucination bug before shipping.</p>
+                    <ul class="project-preview-list">
+                        <li>Finds companies hiring for GTM/RevOps roles as a buying signal</li>
+                        <li>Scores intent 0–100 from funding recency, role volume, and posting freshness</li>
+                        <li>AI-personalized outreach opener, generated per company</li>
+                    </ul>
                     <p class="project-cta">Watch the walkthrough &rarr;</p>
                 </button>
 
@@ -1082,14 +1115,24 @@
                 <button class="card project-card featured-project-card project-trigger"
                         data-media-type=""
                         data-title="AI Lookalike Prospecting & Competitor Filtering — Clay"
-                        data-description="<ul><li>Built an automation that expands a seed list of ideal-fit companies into 100 firmographically-similar lookalikes using Clay's Sculptor AI</li><li>Scores each on a 3-factor fit formula: +40 for headcount in the 51–500 employee range, +30 for privately-held ownership, +30 for known funding status</li><li>Added an AI column that flags prospects already using a named competitor, based on company/job-posting context</li><li>Caught and corrected 2 real AI false positives during QA — the model misread technical-partnership mentions as vendor usage</li><li>Spot-verified the final shortlist against real LinkedIn data: 3 for 3 accurate on headcount, industry, and HQ</li><li>No paid tools, no internal company data — public data and self-authored synthetic data only</li></ul>">
+                        data-description="Built an automation that expands a seed list of ideal-fit companies into 100 firmographically-similar lookalikes using Clay's Sculptor AI, then scores them with a 3-factor fit formula: +40 for headcount in the 51–500 employee range, +30 for a privately-held ownership structure, +30 for known funding status.
+
+Added an AI column that reads company/job-posting context to flag prospects already using a named competitor — caught and corrected 2 real AI false positives during QA, where the model misread technical-partnership mentions as vendor usage.
+
+Spot-verified the final shortlist against real LinkedIn company data: 3 for 3 accurate on headcount, industry, and HQ.
+
+No paid tools, no internal company data — public data and self-authored synthetic data only.">
                     <div class="project-tags">
                         <span class="project-tag">Clay</span>
                         <span class="project-tag">Sculptor AI</span>
                         <span class="project-tag">Verified</span>
                     </div>
                     <h3>AI Lookalike Prospecting & Competitor Filtering</h3>
-                    <p>Expands a seed list into scored, competitor-filtered prospects using Clay's Sculptor AI. Caught 2 AI false positives during QA before shipping.</p>
+                    <ul class="project-preview-list">
+                        <li>Expands a seed list into 100 scored lookalikes via Sculptor AI</li>
+                        <li>3-factor fit formula: headcount, ownership structure, funding status</li>
+                        <li>Flags prospects already using a named competitor</li>
+                    </ul>
                     <p class="project-cta">Read the full case study &rarr;</p>
                 </button>
             </div>
