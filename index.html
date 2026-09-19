@@ -320,11 +320,11 @@
             transition: var(--hover-transition);
         }
         
-        .tool-icon .fa-figma { color: #F24E1E; }
+        .tool-icon .fa-layer-group { color: #FF6B4A; }
+        .tool-icon .fa-diagram-project { color: #EA4B71; }
+        .tool-icon .fa-spider { color: #97D700; }
         .tool-icon .fa-database { color: #007BFF; }
-        .tool-icon .fa-google { color: #4285F4; }
-        .tool-icon .fa-briefcase { color: #9E9E9E; }
-        .tool-icon .fa-graduation-cap { color: #FFC107; }
+        .tool-icon .fa-github { color: #9E9E9E; }
         .tool-icon .fa-linkedin-in { color: #0A66C2; }
 
         .tool-icon:hover {
@@ -955,17 +955,19 @@
         <section class="hero">
             <img src="https://i.ibb.co/tM3vYCtP/profile-pic-2.png" alt="Arsh Ahmed - Avatar" class="profile-image">
             <h1>Arsh Ahmed</h1>
-            <p class="role">Instructional Designer, UX Designer, Product Thinker, Project Manager</p>
+            <p class="role">GTM Engineer &middot; Clay Automation Builder &middot; Founder @ Clerex</p>
             <p class="intro">
-                I don't just build products; I build understanding. I leverage UX and Product thinking to find the "Right" problem, 
-                Instructional Design to craft the "Right" solution, and Project Management to build the solution "Right".
+                I build AI-powered prospecting and outbound automations in Clay — signal-based intent scoring,
+                AI lookalike modeling, and competitor filtering — each independently verified against real company
+                data, not just prototyped. Founder of Clerex, an automation agency running a full outbound pipeline
+                from scraping to AI-personalized outreach.
             </p>
             <div class="interest-tags">
-                <span class="interest-tag">Product Management</span>
-                <span class="interest-tag">UX Design</span>
-                <span class="interest-tag">Project Management</span>
-                <span class="interest-tag">Business Analysis</span>
-                <span class="interest-tag">E-Learning</span>
+                <span class="interest-tag">Clay</span>
+                <span class="interest-tag">GTM Automation</span>
+                <span class="interest-tag">SQL</span>
+                <span class="interest-tag">Prospecting & Lead Scoring</span>
+                <span class="interest-tag">n8n / Apify</span>
             </div>
         </section>
 
@@ -975,35 +977,35 @@
             <div class="card">
                 <h2>Technical Skills</h2>
                 <div class="skill-tags">
-                    <button class="skill-pill modal-trigger" data-title="SQL" 
+                    <button class="skill-pill modal-trigger" data-title="Clay"
+                            data-description="Built production Clay workflows spanning signal-based intent scoring, AI-driven lookalike modeling (Sculptor), and competitor filtering — each independently verified against real company data before shipping.">
+                        Clay
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Waterfall Enrichment"
+                            data-description="Chain multiple data providers with automatic fallback in Clay to maximize match rates while minimizing wasted credits.">
+                        Waterfall Enrichment
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="AI Column Verification"
+                            data-description="Use AI columns for research, scoring, and copywriting — paired with a verification habit that's caught real errors before shipping, including a hallucinated company profile and two false-positive competitor flags misreading partnership mentions as vendor usage.">
+                        AI Column Verification
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="n8n"
+                            data-description="Build and operate automation workflows in n8n powering an outbound lead-generation pipeline for Clerex.">
+                        n8n
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="Apify"
+                            data-description="Use Apify actors for structured web scraping of business/company data feeding automation pipelines.">
+                        Apify
+                    </button>
+                    <button class="skill-pill modal-trigger" data-title="SQL"
                             data-description="Proficient in writing SQL queries to retrieve, manipulate, and analyze data. Certified SQL (Intermediate) by HackerRank.">
                         SQL
                     </button>
-                    <button class="skill-pill modal-trigger" data-title="E-Learning Content" 
-                            data-description="Experience in designing and creating interactive e-learning content for platforms like Udemy and Coursera, focusing on merging creativity and technology.">
-                        E-Learning Content
+                    <button class="skill-pill modal-trigger" data-title="Prompt Engineering"
+                            data-description="Write and iterate on prompts for AI columns and automations, refining based on real output errors rather than assuming first-pass correctness.">
+                        Prompt Engineering
                     </button>
-                    <button class="skill-pill modal-trigger" data-title="ADDIE Model" 
-                            data-description="Trained in the ADDIE model (Analysis, Design, Development, Implementation, Evaluation) for instructional design.">
-                        ADDIE Model
-                    </button>
-                    <button class="skill-pill modal-trigger" data-title="Bloom's Taxonomy" 
-                            data-description="Skilled in mapping course objectives and learning outcomes using Bloom's Taxonomy to create effective educational experiences.">
-                        Bloom's Taxonomy
-                    </button>
-                    <button class="skill-pill modal-trigger" data-title="User Research" 
-                            data-description="Foundation in UX design principles from Google, including how to empathize with users and define their core needs and pain points.">
-                        User Research
-                    </button>
-                    <button class="skill-pill modal-trigger" data-title="Wireframing" 
-                            data-description="Capable of creating low-fidelity and high-fidelity wireframes to map out user flows and screen layouts.">
-                        Wireframing
-                    </button>
-                    <button class="skill-pill modal-trigger" data-title="Prototyping" 
-                            data-description="Hands-on experience with Figma to build interactive prototypes for user testing and stakeholder presentations.">
-                        Prototyping
-                    </button>
-                    <button class="skill-pill modal-trigger" data-title="Business Analysis" 
+                    <button class="skill-pill modal-trigger" data-title="Business Analysis"
                             data-description="Certified by LinkedIn Learning in Business Analysis, with a focus on understanding organizational dynamics and process optimization.">
                         Business Analysis
                     </button>
@@ -1050,34 +1052,34 @@
         <section class="card">
             <h2>Tools</h2>
             <div class="tools-grid">
+                <button class="tool-icon modal-trigger" title="Clay"
+                        data-title="Clay"
+                        data-description="My core GTM engineering tool — waterfall enrichment, AI columns, Sculptor lookalike modeling, and formula generation, used to build multiple verified prospecting automations.">
+                    <i class="fas fa-layer-group"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="n8n"
+                        data-title="n8n"
+                        data-description="Workflow orchestration for Clerex's outbound automation pipeline.">
+                    <i class="fas fa-diagram-project"></i>
+                </button>
+                <button class="tool-icon modal-trigger" title="Apify"
+                        data-title="Apify"
+                        data-description="Structured web scraping for business/company list building, feeding downstream enrichment and outreach automations.">
+                    <i class="fas fa-spider"></i>
+                </button>
                 <button class="tool-icon modal-trigger" title="SQL"
                         data-title="SQL (Intermediate)"
                         data-description="Certified by HackerRank, I use SQL to query databases, perform analysis, and retrieve data for reporting.">
                     <i class="fas fa-database"></i>
                 </button>
-                <button class="tool-icon modal-trigger" title="Figma"
-                        data-title="Figma (Intermediate)"
-                        data-description="My primary tool for UX design. I use Figma for wireframing, creating high-fidelity interactive prototypes, and collaborating on design systems.">
-                    <i class="fab fa-figma"></i>
-                </button>
-                <button class="tool-icon modal-trigger" title="Google Suite"
-                        data-title="Google Suite"
-                        data-description="Expert in Google Suite (Docs, Sheets, Slides, Forms) for project documentation, data analysis, presentations, and creating surveys.">
-                    <i class="fab fa-google"></i>
-                </button>
-                <button class="tool-icon modal-trigger" title="Recruitment Software (Job Diva)"
-                        data-title="ATS (Job Diva)"
-                        data-description="Utilized Applicant Tracking Systems like Job Diva to manage the full-cycle recruitment process, from sourcing to onboarding.">
-                    <i class="fas fa-briefcase"></i>
-                </button>
-                <button class="tool-icon modal-trigger" title="E-Learning Platforms"
-                        data-title="E-Learning Platforms"
-                        data-description="Experience designing content for major platforms like Udemy and Coursera, understanding their specific technical and engagement requirements.">
-                    <i class="fas fa-graduation-cap"></i>
+                <button class="tool-icon modal-trigger" title="GitHub"
+                        data-title="GitHub"
+                        data-description="Host and maintain this portfolio site directly via GitHub Pages, and use GitHub for version control on automation projects.">
+                    <i class="fab fa-github"></i>
                 </button>
                 <button class="tool-icon modal-trigger" title="LinkedIn"
                         data-title="LinkedIn"
-                        data-description="Used extensively for networking, candidate sourcing (Recruiter), and as a platform for my own professional certifications and learning.">
+                        data-description="Used for networking, GTM research, and as a platform for professional certifications and learning.">
                     <i class="fab fa-linkedin-in"></i>
                 </button>
             </div>
@@ -1193,19 +1195,30 @@ Click to view certificate:
             <h2>Work Experience</h2>
             <div class="work-grid">
                 <button class="card work-card modal-trigger"
-                        data-title="Product Manager (Promoted) @ ORANTS AI"
+                        data-title="Founder @ Clerex (Automation Agency)"
                         data-description="
-• Promoted to manage a team of Instructional Designers after 3 months — owned the full content QA pipeline
-from script review to final video approval, acting as the second-to-final decision maker on all course releases
+• Founded and operate an automation agency delivering outbound lead-generation systems for clients, built on
+n8n, Apify, and AI APIs
+• Built and deployed a full outbound pipeline end-to-end: automated business-list scraping by city/vertical
+(Apify) → rule-based lead filtering → AI-generated, personalized outreach emails, running in production with
+zero manual steps
+• Own the technical stack: n8n workflow orchestration, Supabase backend, FastAPI services, and AI API
+integration">
+                    <h3>Founder</h3>
+                    <p class="company">Clerex (Automation Agency) — Remote</p>
+                    <p class="dates">Jan 2026 – Present</p>
+                </button>
+                <button class="card work-card modal-trigger"
+                        data-title="Instructional Designer @ ORANTS AI"
+                        data-description="
+• Took on team-lead responsibilities after 3 months, managing a team of Instructional Designers — owned the
+full content QA pipeline from script review to final video approval
+• Reported directly to the CEO on all product decisions
 • Conducted market validation for new course launches — researched whether sufficient demand existed
 before committing to production, preventing resource waste on low-ROI courses
 • Coordinated between subject matter experts (teachers/instructors) and internal production teams —
-managed feedback loops, review cycles, and approval gates across asynchronous stakeholders
-• Managed end-to-end content lifecycle for AI/ML education products targeting Udemy and Coursera — from
-requirement analysis through final delivery using ADDIE framework
-• Analysed learner engagement signals to iterate on content strategy — identified drop-off patterns and
-implemented structural changes to improve course completion">
-                    <h3>Product Manager (Promoted)</h3>
+managed feedback loops, review cycles, and approval gates across asynchronous stakeholders">
+                    <h3>Instructional Designer</h3>
                     <p class="company">ORANTS AI (Remote)</p>
                     <p class="dates">Oct 2025 – Feb 2026</p>
                 </button>
@@ -1233,23 +1246,35 @@ competitive analysis methodology to identify sourcing advantages
         <section>
             <h2>Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1: Uses Google Slides Embed -->
+                <!-- Project 1: Signal-Based Prospecting & Intent Scoring -->
                 <button class="card project-card project-trigger"
                         data-media-type="iframe"
-                        data-title="PayPronto - Invoice & Payment Reminder Automation Platform"
-                        data-description="PayPronto is an invoice and payment-reminder automation platform built for freelancers and contractors. It automates invoice follow-ups, tracks payment behavior, and helps users identify high-risk clients through a client risk-scoring system.
+                        data-title="Signal-Based Prospecting & Intent Scoring — Clay"
+                        data-description="Built a Clay workflow that identifies companies actively hiring for GTM/RevOps roles as a buying signal, enriches each with funding, headcount, and open-roles data, and scores intent (0–100) with a weighted formula — funding recency, open-role volume, and posting freshness — auto-classifying every company into Hot / Warm / Cold priority tiers.
 
-Key features include:
-• Automated reminder sequences before and after invoice due dates.
-• Client risk scoring to identify potential late payers.
-• Invoice tracking and payment analytics dashboard.
-• Gmail-powered reminder automation with complete audit logs.
-• Revenue reporting and team management tools.
+Layered in an AI-personalized outreach opener per company. Caught and fixed a real AI hallucination bug before shipping by verifying every output against the actual source job posting — a Claygent research column had invented a completely unrelated company profile instead of using the real data.
 
-This project demonstrates my ability to identify real-world business problems, evaluate technical and regulatory constraints, make product-driven decisions, and build a production-ready SaaS solution from concept to launch."
-                        data-media-source="https://docs.google.com/presentation/d/1j8ti1ERibTVRuJIO7I1s-2QK3mZp_7st/embed?start=false&loop=false&delayms=3000">
-                    <h3>PayPronto</h3>
-                    <p>Invoice & payment-reminder automation platform built for freelancers and contractors.</p>
+No paid tools, no internal company data — public data and self-authored synthetic data only.
+
+Watch the full walkthrough below."
+                        data-media-source="https://www.youtube.com/embed/11CiBV3i9rI">
+                    <h3>Signal-Based Prospecting & Intent Scoring</h3>
+                    <p>Clay workflow scoring buying intent from hiring signals, with an AI-personalized outreach opener.</p>
+                </button>
+
+                <!-- Project 2: AI Lookalike Prospecting & Competitor Filtering -->
+                <button class="card project-card project-trigger"
+                        data-media-type=""
+                        data-title="AI Lookalike Prospecting & Competitor Filtering — Clay"
+                        data-description="Built an automation that expands a seed list of ideal-fit companies into 100 firmographically-similar lookalikes using Clay's Sculptor AI, then scores them with a 3-factor fit formula: +40 for headcount in the 51–500 employee range, +30 for a privately-held ownership structure, +30 for known funding status.
+
+Added an AI column that reads company/job-posting context to flag prospects already using a named competitor — caught and corrected 2 real AI false positives during QA, where the model misread technical-partnership mentions as vendor usage.
+
+Spot-verified the final shortlist against real LinkedIn company data: 3 for 3 accurate on headcount, industry, and HQ.
+
+No paid tools, no internal company data — public data and self-authored synthetic data only.">
+                    <h3>AI Lookalike Prospecting & Competitor Filtering</h3>
+                    <p>Expands a seed list into scored, competitor-filtered prospects using Clay's Sculptor AI.</p>
                 </button>
             </div>
         </section>
