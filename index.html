@@ -320,12 +320,15 @@
             transition: var(--hover-transition);
         }
         
-        .tool-icon .fa-layer-group { color: #FF6B4A; }
-        .tool-icon .fa-diagram-project { color: #EA4B71; }
-        .tool-icon .fa-spider { color: #97D700; }
         .tool-icon .fa-database { color: #007BFF; }
         .tool-icon .fa-github { color: #9E9E9E; }
         .tool-icon .fa-linkedin-in { color: #0A66C2; }
+        .tool-icon img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
 
         .tool-icon:hover {
             transform: scale(1.1) translateY(-5px);
@@ -1055,17 +1058,17 @@
                 <button class="tool-icon modal-trigger" title="Clay"
                         data-title="Clay"
                         data-description="My core GTM engineering tool — waterfall enrichment, AI columns, Sculptor lookalike modeling, and formula generation, used to build multiple verified prospecting automations.">
-                    <i class="fas fa-layer-group"></i>
+                    <img src="assets/logos/clay.png" alt="Clay">
                 </button>
                 <button class="tool-icon modal-trigger" title="n8n"
                         data-title="n8n"
                         data-description="Workflow orchestration for Clerex's outbound automation pipeline.">
-                    <i class="fas fa-diagram-project"></i>
+                    <img src="assets/logos/n8n.svg" alt="n8n">
                 </button>
                 <button class="tool-icon modal-trigger" title="Apify"
                         data-title="Apify"
                         data-description="Structured web scraping for business/company list building, feeding downstream enrichment and outreach automations.">
-                    <i class="fas fa-spider"></i>
+                    <img src="assets/logos/apify.png" alt="Apify">
                 </button>
                 <button class="tool-icon modal-trigger" title="SQL"
                         data-title="SQL (Intermediate)"
